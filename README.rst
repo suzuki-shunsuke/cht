@@ -27,7 +27,7 @@ If you don't want to install cht with pip, download the main script.
 ::
 
     # assume that ~/bin is included in $PATH
-    $ curl https://raw.githubusercontent.com/suzuki-shunsuke/cht/master/main.py -o ~/bin/cht
+    $ curl https://raw.githubusercontent.com/suzuki-shunsuke/cht/master/cht.py -o ~/bin/cht
     $ chmod a+x ~/cht
 
 Usage
