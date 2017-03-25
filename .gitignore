@@ -4,3 +4,5 @@ node_modules
 npm-debug.log
 *.egg-info
 dist
+build
+README.md
