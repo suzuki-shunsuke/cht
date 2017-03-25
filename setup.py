@@ -1,14 +1,11 @@
-import json
-from pkg_resources import resource_string
 from setuptools import setup
 
+import cht
 
-VERSION = json.loads(resource_string(__name__, "package.json"))["version"]
 
 setup(
     name="cht",
-    version=VERSION,
-    data_files=[("", ["package.json"])],
+    version=cht.VERSION,
 
     py_modules=["cht"],
     zip_safe=True,
