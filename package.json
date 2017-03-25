@@ -1,0 +1,28 @@
+{
+  "name": "cht",
+  "version": "1.0.0",
+  "description": "Notify to the slack channel using the incoming webhooks when the previous command has ended.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "commitmsg": "validate-commit-msg",
+    "standard-version": "standard-version"
+  },
+  "repository": "git+https://github.com/suzuki-shunsuke/cht.git",
+  "keywords": [
+    "slack"
+  ],
+  "author": "Suzuki Shunsuke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/suzuki-shunsuke/cht/issues"
+  },
+  "homepage": "https://github.com/suzuki-shunsuke/cht#readme",
+  "devDependencies": {
+    "husky": "^0.13.3",
+    "standard-version": "^4.0.0",
+    "validate-commit-msg": "^2.11.2"
+  }
+}
