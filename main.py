@@ -21,7 +21,8 @@ def get_args():
         description="Notify to slack when the previous command ends",
         prog="cht")
     parser.add_argument(
-        "return_code", type=int, help="the previous command's return code")
+        "return_code", type=int, help="the previous command's return code",
+        nargs="?", default=None)
     parser.add_argument(
         "-c", "--channel", default=os.environ.get("CHT_CHANNEL", None),
         help=("incoming webhook channel. If this option is not specified, "
@@ -41,15 +42,21 @@ def validate_args(args):
 
 def make_params(args, stdin_str):
     params = {}
-    if stdin_str:
-        params["attachments"] = [{
-            "text": stdin_str
-        }]
+    if stdin_str is None:
+        if args.return_code is None:
+            params["text"] = "previous command has ended"
+        else:
+            params["attachments"] = [{
+                "text": "failure" if args.return_code else "success",
+                "color": "danger" if args.return_code else "good",
+            }]
     else:
-        params["attachments"] = [{
-            "text": "failure" if args.return_code else "success",
-            "color": "danger" if args.return_code else "good",
-        }]
+        if stdin_str:
+            params["attachments"] = [{
+                "text": stdin_str
+            }]
+        else:
+            params["text"] = "previous command has ended"
     params["username"] = "cht"
     if args.channel:
         params["channel"] = args.channel
@@ -63,7 +70,7 @@ def execute(stdin_str):
 
 
 def main():
-    stdin_str = sys.stdin.read() if is_pipe() else ""
+    stdin_str = sys.stdin.read() if is_pipe() else None
     try:
         execute(stdin_str)
     except Exception as e:
