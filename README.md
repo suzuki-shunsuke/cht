@@ -1,4 +1,4 @@
-# 11fire
+# cht
 
 Notify to the slack channel using the incoming webhooks when the previous command has ended.
 

@@ -1,0 +1,3 @@
+#!/bin/bash -eu
+
+flake8 `dirname $0`/../*.py
