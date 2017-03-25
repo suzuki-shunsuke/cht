@@ -1,17 +1,19 @@
 import json
+from pkg_resources import resource_string
 from setuptools import setup
 
 
-with open("package.json") as r:
-    VERSION = json.load(r)["version"]
+VERSION = json.loads(resource_string(__name__, "package.json"))["version"]
 
 setup(
     name="cht",
     version=VERSION,
+    data_files=[("", ["package.json"])],
 
+    py_modules=["cht"],
     zip_safe=True,
     entry_points={
-        "console_scripts": ["cht=main:main"],
+        "console_scripts": ["cht=cht:main"],
     },
 
     author="Suzuki Shunsuke",

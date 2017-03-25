@@ -3,13 +3,13 @@
 import argparse
 import json
 import os
+from pkg_resources import resource_string
 import select
 import sys
 import urllib
 
 
-with open("package.json") as r:
-    VERSION = json.load(r)["version"]
+VERSION = json.loads(resource_string(__name__, "package.json"))["version"]
 
 
 def is_pipe():
