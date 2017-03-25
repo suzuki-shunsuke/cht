@@ -11,7 +11,7 @@ setup(
 
     zip_safe=True,
     entry_points={
-        "console_scripts": ["cht=main.main"],
+        "console_scripts": ["cht=main:main"],
     },
 
     author="Suzuki Shunsuke",
