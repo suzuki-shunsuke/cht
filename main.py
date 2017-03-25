@@ -36,7 +36,7 @@ def get_args():
 
 def validate_args(args):
     if args.url is None:
-        sys.exit("[11fire][error] url is required")
+        sys.exit("[cht][error] url is required")
 
 
 def make_params(args, stdin_str):
