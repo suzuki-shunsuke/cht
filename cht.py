@@ -8,7 +8,7 @@ import sys
 import urllib
 
 
-VERSION = "1.1.4"
+VERSION = "1.2.0"
 
 
 def is_pipe():
@@ -30,6 +30,9 @@ def get_args():
         "-u", "--url", default=os.environ.get("CHT_URL", None),
         help=("incoming webhook url. If this option is not specified, "
               "the environment variable 'CHT_URL' is used."))
+    parser.add_argument(
+        "-m", "--message",
+        help="incoming webhook text.")
     parser.add_argument("-v", "--version", action="version", version=VERSION)
     return parser.parse_args()
 
@@ -43,19 +46,37 @@ def make_params(args, stdin_str):
     params = {}
     if stdin_str is None:
         if args.return_code is None:
-            params["text"] = "previous command has ended"
+            params["text"] = (
+                "previous command has ended"
+                if args.message is None else args.message)
         else:
-            params["attachments"] = [{
-                "text": "failure" if args.return_code else "success",
-                "color": "danger" if args.return_code else "good",
-            }]
+            if args.message is None:
+                params["attachments"] = [{
+                    "text": "failure" if args.return_code else "success",
+                    "color": "danger" if args.return_code else "good",
+                }]
+            else:
+                result = "failure" if args.return_code else "success"
+                params["attachments"] = [{
+                    "text": "[{}] {}".format(result, args.message),
+                    "color": "danger" if args.return_code else "good",
+                }]
     else:
         if stdin_str:
-            params["attachments"] = [{
-                "text": stdin_str
-            }]
+            if args.message is None:
+                params["attachments"] = [{
+                    "text": stdin_str
+                }]
+            else:
+                params["attachments"] = [{
+                    "pretext": args.message,
+                    "text": stdin_str
+                }]
         else:
-            params["text"] = "previous command has ended"
+            if args.message is None:
+                params["text"] = "previous command has ended"
+            else:
+                params["text"] = args.message
     params["username"] = "cht"
     if args.channel:
         params["channel"] = args.channel
