@@ -1,6 +1,9 @@
 cht
 ===
 
+.. image:: https://badge.fury.io/py/cht.svg
+    :target: https://badge.fury.io/py/cht
+
 Notify to the slack channel using the incoming webhooks when the
 previous command has ended.
 
