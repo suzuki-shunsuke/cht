@@ -35,14 +35,14 @@ Usage
 
 ::
 
-    $ <previous command>; cht $? [-u <url>] [-c <channel>]
+    $ <previous command>; cht $? [-u <url>] [-c <channel>] [-m <message>]
 
 if you want to send the previous command's output to the slack channel,
 use pipe.
 
 ::
 
-    $ <previous command> | cht [-u <url>] [-c <channel>]
+    $ <previous command> | cht [-u <url>] [-c <channel>] [-m <message>]
 
 Environment Variable
 --------------------
