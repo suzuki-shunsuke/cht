@@ -8,7 +8,7 @@ import sys
 import urllib
 
 
-VERSION = "1.2.0"
+VERSION = "1.2.1"
 
 
 def is_pipe():
