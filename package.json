@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/suzuki-shunsuke/cht#readme",
   "devDependencies": {
-    "husky": "0.14.3",
+    "husky": "4.2.5",
     "standard-version": "4.4.0",
     "validate-commit-msg": "2.11.2"
   }
