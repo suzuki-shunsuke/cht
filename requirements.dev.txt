@@ -31,7 +31,7 @@ simplegeneric==0.8.1      # via ipython
 six==1.10.0               # via pip-tools, prompt-toolkit, traitlets
 traitlets==4.3.2          # via ipython
 twine==1.8.1
-urllib3==1.24.3           # via requests
+urllib3==1.25.9           # via requests
 wcwidth==0.1.7            # via prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
